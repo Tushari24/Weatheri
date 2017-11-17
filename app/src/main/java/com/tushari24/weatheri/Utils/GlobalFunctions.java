@@ -41,11 +41,11 @@ public class GlobalFunctions implements CallbackListener {
         if (activeNetwork != null) { // connected to the internet
             if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
                 // connected to wifi
-                Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
                 returnvalue = true;
             } else if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
                 // connected to the mobile provider's data plan
-                Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, activeNetwork.getTypeName(), Toast.LENGTH_SHORT).show();
                 returnvalue = true;
             }
         } else {
@@ -142,13 +142,13 @@ public class GlobalFunctions implements CallbackListener {
 
 
     public void callAPI(String url, String jsonObject) {
-       // if (isConnectingToInternet()) {
+        if (isConnectingToInternet()) {
             WeatheriApiService apiService = new WeatheriApiService(context, GlobalFunctions.this, url, jsonObject);
             apiService.execute();
-       // }else {
-           // showAlertDialog(context, Constants.ALERT_TITLE, ErrorMessages.NETWORKAVAILABILITY,
-         //           false);
-       // }
+        }else {
+            showAlertDialog(context, Constants.ALERT_TITLE, ErrorMessages.NETWORKAVAILABILITY,
+                    false);
+        }
     }
 
 
