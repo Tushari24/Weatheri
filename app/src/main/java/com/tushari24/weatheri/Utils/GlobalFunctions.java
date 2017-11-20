@@ -13,6 +13,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import com.tushari24.weatheri.Activities.WeatheriActivity;
 import com.tushari24.weatheri.Net.CallbackListener;
 import com.tushari24.weatheri.Net.WeatheriApiService;
 
@@ -149,6 +151,19 @@ public class GlobalFunctions implements CallbackListener {
             showAlertDialog(context, Constants.ALERT_TITLE, ErrorMessages.NETWORKAVAILABILITY,
                     false);
         }
+    }
+
+    @Override
+    public void weatherResponceTaskCompleted(String responseString) {
+        // TODO Auto-generated method stub
+        if (context.getClass().equals(WeatheriActivity.class)) {
+            if(responseString != null)
+            {
+                WeatheriActivity activity = (WeatheriActivity) context;
+                activity.updateWeatherUi(responseString);
+            }
+        }
+
     }
 
 

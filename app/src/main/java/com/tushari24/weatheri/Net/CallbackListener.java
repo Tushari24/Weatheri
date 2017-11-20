@@ -7,4 +7,5 @@ package com.tushari24.weatheri.Net;
 public interface CallbackListener {
 
 
+    void weatherResponceTaskCompleted(String responseString);
 }
